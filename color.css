@@ -1,0 +1,174 @@
+/***** COLOR.CSS START *****/
+
+.color-updated { background: #181007; }
+
+.commons .color.lighter { background: #b6d7a8; } /* green */
+
+.nature .color.lighter { background: #b6d7a8; }
+.building .color.lighter { background: #d9d9d9; } /* light grey */
+.information .color.lighter { background: #ffe599; } /* light yellow */
+.project .color.lighter { background: #ffd966; } /* light orange */
+.safety .color.lighter { background: #d9d9d9; } /* light grey */
+.recovery .color.lighter { background: #93c47d; } /* medium green */
+.profession .color.lighter { background: #d0e0e3; } /* light blue */
+.news .color.lighter { background: #f1c232; } /* medium orange */
+.process .color.lighter { background: #e6b8af; } /* light magenta */
+.method .color.lighter { background: #e6b8af; } /* light magenta */
+.standard .color.lighter { background: #f4cccc; } /* light violet */
+.design .color.lighter { background: #ffd966;} /* light yellow */
+.equipment .color.lighter { background: #fce5cd; } /* light orange */
+.resource .color.lighter { background: #d9ead3; } /* light green */
+.service .color.lighter { background: #a2c4c9; } /* medium blue */
+.supply .color.lighter { background: #f9cb9c; } /* light orange */
+.store .color.lighter { background: #76a5af; } /* medium blue */
+
+.download .color.lighter { background: #279f43; }
+
+/* headers have a stronger color, same shade */
+
+.color.darker { background: #999; } /* darker grey */
+
+.trade .color.darker { background-color: #ffa332; } /* orange */
+.applied .color.darker { background-color: #45818e; } /* cyan */
+.gardening .color.darker { background-color: #9e6933; } /* brown */
+.cafe .color.darker { background-color: #cc4125; } /* red berry */
+.care .color.darker { background-color: #3d8f5f; } /* hospital green */
+.monitoring .color.darker { background-color: #f1c232; } /* yellow */
+.academic .color.darker { background-color: #8e7cc3; } /* purple */
+.arts .color.darker { background-color: #a64d79; } /* magenta */
+.commons .color.darker { background-color: #b6d7a8; } /* green */
+
+.nature .color.darker { background-color: #b6d7a8; } /* green */
+.building .color.darker { background-color: #d9d9d9; }
+.information .color.darker { background-color: #ffe599; }
+.interface .color.darker { background-color: #ffe599; }
+.project .color.darker { background-color: #ffd966; }
+.safety .color.darker { background-color: #d9d9d9; }
+.recovery .color.darker { background-color: #93c47d; }
+.profession { background-color: #d0e0e3; }
+.supply .color.darker { background-color: #f9cb9c; }
+.store .color.darker { background-color: #76a5af; }
+.news .color.darker { background-color: #f1c232; }
+.process .color.darker { background-color: #e6b8af; }
+.method .color.darker { background-color: #cccccc; }
+.standard .color.darker { background-color: #f4cccc; }
+.design .color.darker { background-color: #fc3; } /* darker yellow */
+.equipment .color.darker { background-color: #fce5cd; }
+.resource .color.darker { background-color: #d9ead3; }
+.service .color.darker { background-color: #a2c4c9; }
+
+.download .color.darker { background-color: #279f43; }
+
+/* SUB LEVEL COLORS */
+
+.color.lighter { background: #d9d9d9; } /* light grey */
+
+/* TRADE */
+.trade .color.lighter { background: #ffd199; } /* orange */
+.carpentry .color.lighter { background-color: #ea9999; }
+.electrical .color.lighter { background-color: #f9cb9c; }
+.plumbing .color.lighter { background-color: #ffe599; }
+.mechanical .color.lighter { background-color: #b6d7a8; }
+.welding .color.lighter { background-color: #9fc5e8; }
+.masonry .color.lighter { background-color: #b4a7d6; }
+
+/* CAFE */
+.cafe .color.lighter { background: #e6b8af; } /* red berry */
+.storage .color.lighter { background-color: #ea9999; }
+.baking .color.lighter { background-color: #f9cb9c; }
+.cooking .color.lighter { background-color: #ffe599; }
+.serving .color.lighter { background-color: #b6d7a8; }
+.cleaning .color.lighter { background-color: #9fc5e8; }
+.recycling .color.lighter { background-color: #b4a7d6; }
+
+/* APPLIED */
+.applied .color.lighter { background: #a2c4c9; } /* cyan */
+.engineering .color.lighter { background-color: #ea9999; }
+.architecture .color.lighter { background-color: #f9cb9c; }
+.landscaping .color.lighter { background-color: #ffe599; }
+.permaculture .color.lighter { background-color: #b6d7a8; }
+.programming .color.lighter { background-color: #9fc5e8; }
+.robotics .color.lighter { background-color: #b4a7d6; }
+
+/* ART */
+.art .color.lighter { background: #d5a6bd; } /* magenta */
+.piano .color.lighter { background-color: #ea9999; }
+.violin .color.lighter { background-color: #f9cb9c; }
+.painting .color.lighter { background-color: #ffe599; }
+.sculpture .color.lighter { background-color: #b6d7a8; }
+.pottery .color.lighter { background-color: #9fc5e8; }
+.saxophone .color.lighter { background-color: #b4a7d6; }
+
+/* ACADEMIC */
+.academic .color.lighter { background: #d9d2e9; } /* purple */
+.mathematics .color.lighter { background-color: #ea9999; }
+.physics .color.lighter { background-color: #f9cb9c; }
+.chemistry .color.lighter { background-color: #ffe599; }
+.genetics .color.lighter { background-color: #b6d7a8; }
+.cognition .color.lighter { background-color: #9fc5e8; }
+.logic .color.lighter { background-color: #b4a7d6; }
+
+/* GARDENING */
+.gardening .color.lighter { background: #eedbc9; } /* brown */
+.cultivating .color.lighter { background-color: #ea9999; }
+.planting .color.lighter { background-color: #f9cb9c; }
+.watering .color.lighter { background-color: #ffe599; }
+.weeding .color.lighter { background-color: #b6d7a8; }
+.harvesting .color.lighter { background-color: #9fc5e8; }
+.processing .color.lighter { background-color: #b4a7d6; }
+
+/* MONITORING */
+.monitoring .color.lighter { background: #ffe599; } /* yellow */
+.analysis .color.lighter { background-color: #ea9999; }
+.writing .color.lighter { background-color: #f9cb9c; }
+.audio .color.lighter { background-color: #ffe599; }
+.photography .color.lighter { background-color: #b6d7a8; }
+.graphics .color.lighter { background-color: #d0bef4; }
+.video .color.lighter { background-color: #9fc5e8; }
+.presenting .color.lighter { background-color: #b4a7d6; }
+
+/* CARE */
+.care .color.lighter { background: #a6d9bb; } /* hospital green */
+.clothing .color.lighter { background-color: #ea9999; }
+.hair .color.lighter { background-color: #f9cb9c; }
+.shoes .color.lighter { background-color: #ffe599; }
+.physio .color.lighter { background-color: #b6d7a8; }
+.nutrition .color.lighter { background-color: #9fc5e8; }
+.other .color.lighter { background-color: #b4a7d6; }
+
+/* WHEN */
+.day .color.lighter { background: #b6d7a8; }
+.week .color.lighter { background: #d9d9d9; }
+.month .color.lighter { background: #ffe599; }
+.year .color.lighter { background: #e6b8af; }
+
+/* WHY */
+.ethics .color.lighter { background: #b6d7a8; }
+.sustainability .color.lighter { background: #d9d9d9; }
+.religion .color.lighter { background: #ffe599; }
+.other .color.lighter { background: #e6b8af; }
+
+/* BORDERS */
+.who.boxes .border { border-color: #70a5ac; } /* dark blue */
+.what.boxes .border { border-color: #72b257; } /* dark green */
+.how.boxes .border { border-color: #444; } /* dark grey */
+.where.boxes .border { border-color: #ffae4b; } /* dark orange */
+.when.boxes .border { border-color: #ad8100; } /* dark yellow */
+.why.boxes .border { border-color: #6c53a3; } /* dark purple */
+.store .border { border-color: #999; } /* medium grey */
+
+nav.icons .who .icon { background-color: #a2c4c9; } /* blue */
+nav.icons .what .icon { background-color: #b6d7a8; } /* green */
+nav.icons .how .icon { background-color: #d9d9d9; } /* grey */
+nav.icons .where .icon { background-color: #ffd199; } /* orange */
+nav.icons .when .icon { background-color: #ffe599; } /* yellow */
+nav.icons .why .icon { background-color: #d9d2e9; } /* purple */
+
+nav.icons .icon {
+    border-radius: 3px;
+    border: 1px solid #777;
+	width: 35px;
+	height: 35px;
+	box-shadow: 1px 1px 1px #999;
+}
+/***** COLOR.CSS END *****/
