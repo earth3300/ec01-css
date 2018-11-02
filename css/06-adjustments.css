@@ -1,0 +1,254 @@
+
+/**
+ * Adjustments CSS.
+ *
+ * This should appear last in the chain.
+ */
+@media screen {
+
+	.child-updated { background: #180923; }
+
+	/*** COLOR START ***/
+
+	body { border: 1px solid #999; }
+
+	.title-wrap { background-color: #93c47d; }
+
+	.site-title, .site-description { color: #efefef; }
+
+	.site-title {
+		text-shadow: 2px -1px 2px #134f5c;
+		display: none;
+		}
+
+	.site-description {
+		text-shadow: 1px 1px 1px #134f5c;
+		/* faded sky blue */
+		line-height: 1.3em;
+		font-size: 1.2em;
+	}
+
+	.site-header { border-bottom: 1px solid #999; }
+
+	.site-header-sub { border-bottom: 1px solid #999; }
+
+	.spacer-header { border-bottom: #777 solid 4px; }
+
+	.spacer-header-bottom { box-shadow: 0 1px 2px rgba(50, 50, 50, 1.0); }
+
+	.spacer-footer-top {
+		border-top: #777 solid 4px;
+		box-shadow: 1px 1px 2px rgba(50, 50, 50, 1.0);
+	}
+
+	.active { background: #e0e0e0; }
+
+	.inactive {	background: #eee; }
+
+	.core .border { background: #a2c4c9; }
+
+	.alt .border { background: #ffd966; }
+
+	article .unit .border {
+		border-width: 6px;
+		padding: 3px;
+	}
+
+	.unit .border {
+		border: #999 solid 4px;
+		box-shadow: 1px 1px 3px rgba(50, 50, 50, 1.0);
+	}
+
+	.boxes .unit .inner { box-shadow: inset 1px 1px 3px rgba(50, 50, 50, 1.0); }
+
+	.boxes > .line > .unit > .inner { border: 1px solid #c8c8c8; }
+
+	/*** COLOR END ***/
+
+	/*** SECTION START ***/
+
+	section .inner {
+		padding: 10px;
+	}
+
+	section.boxes {
+		margin-top: 15px;
+		border: 1px solid #aaa;
+		border-radius: 7px;
+	}
+
+	section.boxes h2 {
+		margin: 0;
+		margin-bottom: 10px;
+		padding-top: 0;
+	}
+
+	/*** SECTION END ***/
+
+	/*** BOXES START ***/
+
+	.boxes {
+		overflow: hidden;
+	}
+
+	.boxes a { border-bottom: none; }
+
+	.boxes h2, .boxes h3 { text-align: center; }
+
+	.boxes h2 { font-size: 100%; }
+
+	.boxes h3 { font-size: 80%; }
+
+	.boxes h4 { font-size: 75%; }
+
+	.boxes > .line > .unit:last-child { margin-bottom: 0; }
+
+	.boxes > .line > .unit > .inner {
+		margin: 5px;
+		overflow: hidden;
+	}
+
+	.boxes .unit .inner { padding: 5px; }
+
+	.boxes h2 {
+		clear: both;
+		text-align: center;
+		font-family: sans-serif;
+		padding-top: 10px;
+		opacity: .8;
+	}
+
+	.boxes .unit h2 { margin: 0; }
+
+	.boxes.vertical a { display: block; }
+
+	/*** BOXES END ***/
+
+	/*** BORDER RADIUS START ***/
+
+	.boxes .unit .border { border-radius: 7px; }
+	.boxes .unit .inner { border-radius: 3px; }
+	.boxes > .line > .unit > .inner { border-radius: 4px; }
+
+	/*** BORDER RADIUS END ***/
+
+	/*** OTHER START ***/
+
+	/*
+	.title-wrap {
+		background-image: url('/0/theme/image/uni-village-logo-95x95.png');
+		background-repeat: no-repeat;
+		background-size: 95px;
+		background-position: 18px center;
+	}
+	*/
+
+	h1 { text-align: center; }
+
+	.community .unit a { font-weight: bold; }
+
+	iframe {
+		display: block;
+		margin: 0 auto;
+	}
+
+	p.date { font-size: 80%; }
+
+	/*** OTHER END ***/
+
+	/*** MISC START ***/
+
+	.what h3 { display: none; }
+
+	.spacer { margin-bottom: 20px; }
+
+	/* Survey Monkey Embedded Survey Form */
+	.smcx-embed {
+		display: block !important;
+		margin: 0 auto !important;
+	}
+
+	/*** MISC END ***/
+
+	/*** TIER 2 (CLUSTER) START ***/
+
+	.tier-2 .site-header {
+		position: relative;
+	}
+
+	.tier-2 .site-logo {
+		position: absolute;
+		z-index: 10;
+	}
+
+	.tier-2 .site-logo .inner {
+		height: 25px;
+	}
+	.tier-2 .site-logo img {
+		width: 25px;
+		height: 25px;
+	}
+
+	.tier-2 .level-1.icon {
+		position: absolute;
+		z-index: 10;
+		right: 40px;
+		top: 19px;
+		height: 35px;
+		width: 35px;
+		display: inline-block;
+	}
+
+	.tier-2 .site-header { height: 20px; }
+
+	.tier-2 .title-wrap {
+		height: 20px;
+		background-size: 18px;
+		background-position: 5px;
+	}
+
+	.tier-2 .title-wrap .inner { display: none; }
+
+	.tier-2 .site-header-sub {
+		margin-top: 0;
+		height: 75px;
+		text-align: left;
+		vertical-align: middle;
+		line-height: 75px;
+		position: relative;
+	}
+
+	.tier-2 .site-header-sub .level-01 {
+		display: inline-block;
+		height: 75px;
+		padding: 0 1.0em;
+		line-height: 75px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 120%;
+	}
+
+	.tier-2 .site-header-sub .level-02 {
+		font-weight: bold;
+		font-size: 110%;
+		width: 75%;
+		right: 0;
+		top: 0;
+	}
+
+	.tier-2 .site-header-sub .level-02 span {
+		display: inline-block;
+	}
+
+	.header-height {
+		height: 75px;
+		padding-left: 15px;
+	}
+
+	.left {
+		float: left;
+	}
+
+	/*** CLUSTER END ***/
+}
+/* ADJUSTMENTS.CSS END **/
