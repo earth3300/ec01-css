@@ -5,3 +5,5 @@ A set of CSS files used in this project. These files are broken down into severa
 Instead of a focus on responsiveness, with smaller view screens getting priority, the css file focusing on responsiveness has been called "device.css". This is because--in most cases--the browser is at full size on the device, and larger monitors should get the recognition they deserve. In addition, device specific styling may be available and become more developed in the future (such as that dealing with landscape or portrait orientation). 
 
 If the styling is set up correctly, each device or monitor should display the page correctly, without interfering with the other. That is the goal.
+
+In addition, a file called `style.all.css` MAY contain all of the files used concatenated into one file. Finally, a file called `style.min.css` SHOULD contain all of the files in `style.all.css`, but compressed, with comments spacing and line returns removed.
