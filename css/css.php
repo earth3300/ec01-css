@@ -35,7 +35,7 @@ class EC01CSS
 
 	/** @var array Default options. */
 	protected $opts = [
-		'max' => [ 'files' => 8, 'length' => 50000 ],
+		'max' => [ 'files' => 8, 'length' => 75000 ],
 		'mime' => [
 				   'type' => 'text',
 				   'subtype' => 'plain',
@@ -47,11 +47,17 @@ class EC01CSS
 					'all' => 'style.all.css',
 					'min' => 'style.min.css' ]
 				   ],
-		'message' => [
+		'message' =>
+					[
 					  'na' => 'Not available.',
-					  'denied' => 'Write permission denied.',
-					  ],
-		];
+					  'write' =>
+						[
+						'denied' => 'Write permission denied.' ,
+						'success' => 'Write operation succeeded.',
+						'failure' => 'Write operation failed.',
+						],
+					]
+			];
 
 	/**
 	 * Gets the list of files
@@ -66,6 +72,8 @@ class EC01CSS
 	 */
 	public function get( $args = null )
 	{
+		$msg = '';
+
 		/** If no arguments are set, assume current directory */
 		if ( $args = $this->setDirectorySwitch( $args ) )
 		{
@@ -74,32 +82,37 @@ class EC01CSS
 			$args['mime'] = $this->opts['mime'];
 
 			$files = $this->iterateFiles( $args );
+			
+			$msg .= sprintf( '<p>%s</p>%s', $files['cnt'] . ' files', PHP_EOL );
 
-			printf( '<p>%s</p>%s', strlen ( $files['str'] ) . ' bytes', PHP_EOL );
+			$msg .= sprintf( '<p>%s</p>%s', strlen ( $files['str'] ) . ' bytes', PHP_EOL );
 
-			if ( file_exists( __DIR__ . '/.security' ) )
-			{
-				if ( isset( $_GET['print'] ) )
+			if (
+				'127.0.0.1' == $_SERVER['REMOTE_ADDR']
+				&& isset( $_GET['print'] )
+				&& isset( $_GET['unlock'] )
+				&& file_exists( __DIR__ . '/.security' )
+				)
 				{
 					if ( $this->putContents( $files['str'] ) )
 					{
-						return true;
+						$msg .= sprintf( '<p>%s</p>%s', $this->opts['message']['write']['success'], PHP_EOL );
 					}
 					else
 					{
-						return false;
+
+						$msg .= sprintf( '<p>%s</p>%s', $this->opts['message']['write']['failure'], PHP_EOL );;
 					}
 				}
-			}
-			else
-			{
-				printf( '<p>%s</p>%s', $this->opts['message']['denied'], PHP_EOL );
-			}
+				else {
+					$msg .= sprintf( '<p>%s</p>%s', $this->opts['message']['write']['denied'], PHP_EOL );
+				}
 		}
 		else
 		{
-			return $this->opts['message']['na'];
+			$msg .= $this->opts['message']['na'];
 		}
+		return $msg;
 	}
 
 	/**
@@ -137,36 +150,32 @@ class EC01CSS
 				! empty( $file )
 				&& is_string( $file )
 				&& ! in_array( $file, $this->opts['exclude'] ) )
-			{
-				/** Make sure we haven't gone over the number of files allowed */
-				if ( $cnt < $this->opts['max']['files'] )
 				{
-					/** Get the contents of the file. */
-					$contents = file_get_contents( $file_and_path );
-
-					/** Make sure the file is not too long, not empty and non trivial ( > 4 bytes ). */
-					$length = strlen( $contents );
-					if (
-						$length > 4
-						&& $length < $this->opts['max']['length']
-						)
+					/** Make sure we haven't gone over the number of files allowed */
+					if ( $cnt < $this->opts['max']['files'] )
 					{
-						/** Add the contents to the total string. */
-						$files['str'] .= $contents;
-						$files['files'][] = $file;
+						/** Get the contents of the file. */
+						$contents = file_get_contents( $file_and_path );
+
+						/** Make sure the file is not too long, not empty and non trivial ( > 4 bytes ). */
+						$length = strlen( $contents );
+						if (
+							$length > 4
+							&& $length < $this->opts['max']['length']
+							)
+						{
+							/** Add the contents to the total string. */
+							$files['str'] .= $contents;
+							$files['files'][] = $file;
+						}
 					}
 				}
-			}
 		}
 
 		$files['cnt'] = $cnt;
 
 		if ( $cnt > 0 )
 		{
-			echo "<pre>";
-			var_dump( $files['files'] );
-			echo "</pre>";
-
 			return $files;
 		}
 		else
