@@ -1,16 +1,29 @@
 
 /**
- * Bootstrap CSS
+ * EC01 Bootstrap CSS
  *
- * Basic styling to get you started. Does not include responsive design, or
- * additional styling of elements. May include some colors.
+ * This file includes basic formatting. It specifys a san-serif font, makes the
+ * links look nicer, specifies a width for the body, and a font size and line
+ * height. It does not include responsive design, or additional styling of elements.
+ * It may include styling in the future (such as for buttons), to bring it closer
+ * in line to Bootstrap CSS {@see https://getbootstrap.com/docs/3.3/css/}. However,
+ * it is meant to just include the basics, and so does not include all the styling
+ * included there by intention. It also uses the HSL color model, which the author
+ * has found *much* easier to work with, as all that is needed is a basic knowledge
+ * of where the color is (from red to violet) on a circle of 360 degrees. With that
+ * in place, the saturation and lightness can be adjusted with confidence, knowing
+ * that the basic hue (the color) will not change. This can't be done using the RBG
+ * color model or when using hex, the standard way of specifying color at the time
+ * of this writing. All modern browsers support this color model
+ * {@see https://caniuse.com/#search=hsl} and there are no known issues with it.
  *
  * Created: 2016.12.15
- * Updated: 2018.11.02 11:00 AM EST
- * License: GPL v3.0
- * Author: Earth3300
+ * Updated: 2018.11.02 21:00 PM EST
+ *
+ * File Name: 01-bootstrap.css
+ * File URI: https://github.com/earth3300/ec01-css
  * Author URI: https://github.com/earth3300
- * CSS URI:
+ * License: GPL v3.0
  */
 
 /**
@@ -22,13 +35,12 @@
  */
 @media all {
 
-	html,
 	body {
 		height: 100%;
 	}
 
 	body {
-		font: 16px/1.6 sans-serif;
+		font: 1em/1.6 sans-serif;
 		background-color: hsl(0, 0%, 100%);
 		color: hsl(0, 0%, 20%);
 		max-width: 750px;
@@ -37,7 +49,7 @@
 	}
 
 	a {
-		color: hsl(204, 100%, 25%);
+		color: hsl(204, 25%, 25%);
 		text-decoration: none;
 	}
 
@@ -51,16 +63,12 @@
 		opacity: .85;
 	}
 
-	footer a {
-		font-weight: normal;
-	}
-
 	.hide {
 		display: none;
 	}
 
 }
-/* MEDIA ALL END */
+/* Media All End */
 
 /**
  * Screen Media
@@ -70,14 +78,19 @@
  */
 @media screen {
 
-	/** The color transitions over the time period specified. */
+	/** The effect transitions over the time period specified. */
 	a {
-		transition: color .5s;
+
 	}
 
 	/** The color of the link, before any action has been taken. */
 	a:link {
-		color: hsl(204, 100%, 25%);
+		color: hsl(204, 25%, 25%);
+	}
+
+	/** Triggered after the element has been visited. */
+	a:visited {
+		color: hsl(204, 25%, 30%);
 	}
 
 	/** The cursor changes to a pointer, when mouse is over element. */
@@ -87,7 +100,7 @@
 
 	/** Triggered when cursor is hovering over the element. */
 	a:hover {
-		color: hsl(75, 50%, 50%);
+		color: hsl(75, 50%, 40%);
 	}
 
 	/** Triggered when the element has focus, such as after tabbing to it. */
@@ -97,22 +110,20 @@
 
 	/** Triggered when the element is active. */
 	a:active {
-		color: hsl(75, 50%, 50%);
-	}
-
-	/** Triggered after the element has been visited. */
-	a:visited {
-		color: hsl(204, 100%, 40%);
+		color: hsl(244, 50%, 25%);
 	}
 
 }
-/* MEDIA SCREEN END */
+/* Media Screen End */
 
 /**
  * Print Media
  *
- * This is any formatting not covered by media all. Since additional styling
- * is added using @media screen, this should be minimal.
+ * This can be used to hide elements that don't need to be printed.
+ * As @media screen only affects elements when displayed on the screen,
+ * the styling here should be minimal. Be aware that styling further down
+ * the chain that specify @media all may affect the styling specified here.
+ * However, this is a "bootstrap" file that may be used on its own, if needed.
  */
 @media print {
 
@@ -120,7 +131,7 @@
 		display: none !important;
 	}
 }
-/* MEDIA PRINT END */
+/* Media Print End */
 
 /**
  * Speech Media
@@ -131,4 +142,4 @@
 
 
 }
-/* MEDIA SPEECH END */
+/* Media Speech End */
