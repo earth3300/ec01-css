@@ -1,14 +1,19 @@
 <?php
 /**
- * EC01 CSS.
+ * EC01 CSS Processor.
  *
- * Concatenates the CSS files in the directory in which it is placed.
+ * Processes the CSS files in the directory in which it is placed. Concatenates
+ * all the files that are not explicitly included in the exclude list. Can also
+ * perform basic minification on the file. There are some security checks in place
+ * and it is not recommended to place this file online, out in the wild. It is
+ * intended to be used on a local machine for development purposes. This file
+ * uses a namespace per PSR recommendations.
  *
  * @package Earth3300\EC01
  * @since 1.0.0
  * @author Clarence J. Bos <cbos@tnoep.ca>
  * @copyright Copyright (c) 2018, Clarence J. Bos
- * @license https://www.gnu.org/licenses/gpl-3.0.en.html GPL-3.0+
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html  GPL v3.0
  * @link https://github.com/earth3300/ec01-css
  *
  * @wordpress-plugin
@@ -23,18 +28,21 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
+namespace Earth3300\EC01;
+
 /**
- * Concatenates the CSS files in the directory in which it is placed.
+ * Processes the CSS files in the directory in which it is placed.
  *
  * See the bottom of this file for a more complete description
  * and the switch for determining the context in which this file
  * is found.
  */
-class EC01CSS
+class CSS_Processor
 {
 
 	/** @var array Default options. */
 	protected $opts = [
+		'title' => 'EC01 CSS Processor',
 		'max' => [ 'files' => 8, 'length' => 75000 ],
 		'mime' => [
 				   'type' => 'text',
@@ -62,7 +70,7 @@ class EC01CSS
 	/**
 	 * Gets the list of files
 	 *
-	 * Allow CSS file only.
+	 * Allow CSS files only.
 	 *
 	 * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
 	 *
@@ -82,10 +90,12 @@ class EC01CSS
 			$args['mime'] = $this->opts['mime'];
 
 			$files = $this->iterateFiles( $args );
-			
-			$msg .= sprintf( '<p>%s</p>%s', $files['cnt'] . ' files', PHP_EOL );
 
-			$msg .= sprintf( '<p>%s</p>%s', strlen ( $files['str'] ) . ' bytes', PHP_EOL );
+			$msg .= sprintf( '<h1>%s</h1>%s', $this->opts['title'], PHP_EOL );
+
+			$msg .= sprintf( '<p>%s</p>%s', $files['cnt'] . ' files.', PHP_EOL );
+
+			$msg .= sprintf( '<p>%s</p>%s', strlen ( $files['str'] ) . ' bytes.', PHP_EOL );
 
 			if (
 				'127.0.0.1' == $_SERVER['REMOTE_ADDR']
@@ -112,7 +122,13 @@ class EC01CSS
 		{
 			$msg .= $this->opts['message']['na'];
 		}
-		return $msg;
+		if ( $html = $this->getPageHTML( $msg ) )
+		{
+			return $html;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -360,12 +376,53 @@ class EC01CSS
 			return $args;
 		}
 	}
+
+	/**
+	 * Wrap the HTML in Page HTML `<!DOCTYPE html>`, etc.
+	 *
+	 * Use basic settings. Assume no SEO necessary. Bootstrap CSS only.
+	 *
+	 * @param string $html
+	 *
+	 * @return string|bool
+	 */
+	private function getPageHTML( $html )
+	{
+		if ( ! empty( $html ) )
+		{
+			$str = '<!DOCTYPE html>' . PHP_EOL;
+			$str .= '<html lang="en-CA">' .  PHP_EOL;
+			$str .= '<head>' . PHP_EOL;
+			$str .= '<meta charset="UTF-8">' . PHP_EOL;
+			$str .= '<meta name="viewport" content="width=device-width, initial-scale=1"/>' . PHP_EOL;
+			$str .= sprintf( '<title>%s</title>%s', $this->opts['title'], PHP_EOL );
+			$str .= '<meta name="robots" content="noindex,nofollow" />' . PHP_EOL;
+			$str .= '<link rel=stylesheet href="/0/theme/css/01-bootstrap.css">' . PHP_EOL;
+			$str .= '</head>' . PHP_EOL;
+			$str .= '<body>' . PHP_EOL;
+			$str .= '<main>' . PHP_EOL;
+			$str .= $html;
+			$str .= '</main>' . PHP_EOL;
+			$str .= '<footer>' . PHP_EOL;
+			$str .= '<div class="text-center"><small>';
+			$str .= 'Note: This page has been <a href="https://github.com/earth3300/ec01-css">automatically generated</a>. No header, footer, menus or sidebars are available.';
+			$str .= '</small></div>' . PHP_EOL;
+			$str .= '</footer>' . PHP_EOL;
+			$str .= '</html>' . PHP_EOL;
+
+			return $str;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 
 /**
  * Callback from the ec01-css shortcode.
  *
- * Performs a check, instantiates the EC01CSS class then starts the process.
+ * Performs a check, instantiates the CSS_Processor class, then starts the process.
  *
  * @param array  $args['dir']
  *
@@ -375,7 +432,7 @@ function ec01_css( $args )
 {
 	if ( is_array( $args ) )
 	{
-		$ec01_css = new EC01CSS();
+		$ec01_css = new CSS_Processor();
 		return $ec01_css -> get( $args );
 	}
 	else
@@ -415,6 +472,6 @@ else
 	 *
 	 * @return string
 	 */
-	$ec01_css = new EC01CSS();
+	$ec01_css = new CSS_Processor();
 	echo $ec01_css->get();
 }
