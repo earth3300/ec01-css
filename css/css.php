@@ -1,6 +1,6 @@
 <?php
 /**
- * EC01 CSS Processor.
+ * EC01 CSS.
  *
  * Processes the CSS files in the directory in which it is placed. Concatenates
  * all the files that are not explicitly included in the exclude list. Can also
@@ -10,7 +10,7 @@
  * uses a namespace per PSR recommendations.
  *
  * @package Earth3300\EC01
- * @since 1.0.0
+ * @since 1.0.1
  * @author Clarence J. Bos <cbos@tnoep.ca>
  * @copyright Copyright (c) 2018, Clarence J. Bos
  * @license https://www.gnu.org/licenses/gpl-3.0.en.html  GPL v3.0
@@ -20,7 +20,7 @@
  * Plugin Name: EC01 CSS
  * Plugin URI:  https://github.com/earth3300/ec01-css
  * Description: Concatenates the CSS files in the directory in which it is placed. Shortcode [ec01-css dir=""].
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Clarence J. Bos
  * Author URI: https://github.com/earth3300/
  * Text Domain: ec01-css
@@ -42,12 +42,12 @@ namespace Earth3300\EC01;
  * and the switch for determining the context in which this file
  * is found.
  */
-class CSSProcessor
+class CSS
 {
 
   /** @var array Default options. */
   protected $opts = [
-    'title' => 'EC01 CSS Processor',
+    'title' => 'EC01 CSS',
     'max' => [
               'files' => 15,
               'length' => 99000,
@@ -499,7 +499,7 @@ class CSSProcessor
  *
  * Minify CSS, but keep enough line breaks intact, so it is still readable.
  */
-class MinifyCSS extends CSSProcessor
+class MinifyCSS extends CSS
 {
   /**
   * CSS Minifier => http://ideone.com/Q5USEF + improvement(s)
@@ -579,7 +579,7 @@ class MinifyCSS extends CSSProcessor
  * Updated: 2018-11-21
  * Time: 10:06 AM
  */
-class Minifier extends CSSProcessor
+class Minifier extends CSS
 {
   /**
    * Minify CSS
@@ -635,7 +635,7 @@ class Minifier extends CSSProcessor
 /**
  * Callback from the ec01-css shortcode.
  *
- * Performs a check, instantiates the CSSProcessor class, then starts the process.
+ * Performs a check, instantiates the CSS class, then starts the process.
  *
  * @param array  $args['dir']
  *
@@ -645,7 +645,7 @@ function ec01_css( $args )
 {
   if ( is_array( $args ) )
   {
-    $ec01_css = new CSSProcessor();
+    $ec01_css = new CSS();
     return $ec01_css -> get( $args );
   }
   else
@@ -685,6 +685,6 @@ else
    *
    * @return string
    */
-  $ec01_css = new CSSProcessor();
+  $ec01_css = new CSS();
   echo $ec01_css->get();
 }
